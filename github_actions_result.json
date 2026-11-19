@@ -1,0 +1,147 @@
+{
+  "run_url": "https://github.com/kawaho3/jan-building/actions/runs/44447749217",
+  "run_id": 44447749217,
+  "head_sha": "36a45e98f0eafe75b43e7301302eebf49ec24c5a",
+  "conclusion": "success",
+  "artifact_id": 14494157272,
+  "environment": {
+    "cpu_logical": 4,
+    "memory_total_bytes": 16760344576,
+    "gpu_device_present": false,
+    "platform": "linux"
+  },
+  "disk_before": {
+    "path": "/home/runner/work/_temp/jan-weight-space-runtime",
+    "total_bytes": 154894188544,
+    "used_bytes": 63344033792,
+    "free_bytes": 91533377536,
+    "free_gib": 85.247
+  },
+  "disk_after": {
+    "path": "/home/runner/work/_temp/jan-weight-space-runtime",
+    "total_bytes": 154894188544,
+    "used_bytes": 69166403584,
+    "free_bytes": 85711007744,
+    "free_gib": 79.825
+  },
+  "capability_probe_only": true,
+  "training_performed": false,
+  "original_sha256": "6f9bcb1fdced9494fc477af6ca7e6c0e203540da5343d370eb89c1391b3644e0",
+  "worker_sha256": "2566cf151eecfab690a001ad5b9ee79f649dc53f72938e06dcc430239b8c5794",
+  "modified_sha256": "7a3cb053342449d58c87d1794b24835d78a591cec788abcd7502edaa0a98eaf9",
+  "samples": [
+    {
+      "phase": "baseline",
+      "seconds_including_load": 4.59,
+      "content": " +",
+      "sampled_token_id": 488,
+      "top_logprobs": [
+        {
+          "id": 488,
+          "token": " +",
+          "logprob": -0.02440444566309452
+        },
+        {
+          "id": 35093,
+          "token": "+b",
+          "logprob": -3.778787612915039
+        },
+        {
+          "id": 353,
+          "token": " *",
+          "logprob": -7.542112350463867
+        },
+        {
+          "id": 481,
+          "token": " -",
+          "logprob": -8.807937622070312
+        },
+        {
+          "id": 10,
+          "token": "+",
+          "logprob": -8.88180923461914
+        }
+      ]
+    },
+    {
+      "phase": "zero-final-norm",
+      "seconds_including_load": 4.053,
+      "content": "3",
+      "sampled_token_id": 18,
+      "top_logprobs": [
+        {
+          "id": 3,
+          "token": "$",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 4,
+          "token": "%",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 1,
+          "token": "\"",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 0,
+          "token": "!",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 2,
+          "token": "#",
+          "logprob": -11.931214332580566
+        }
+      ]
+    },
+    {
+      "phase": "restored",
+      "seconds_including_load": 3.657,
+      "content": " +",
+      "sampled_token_id": 488,
+      "top_logprobs": [
+        {
+          "id": 488,
+          "token": " +",
+          "logprob": -0.02440444566309452
+        },
+        {
+          "id": 35093,
+          "token": "+b",
+          "logprob": -3.778787612915039
+        },
+        {
+          "id": 353,
+          "token": " *",
+          "logprob": -7.542112350463867
+        },
+        {
+          "id": 481,
+          "token": " -",
+          "logprob": -8.807937622070312
+        },
+        {
+          "id": 10,
+          "token": "+",
+          "logprob": -8.88180923461914
+        }
+      ]
+    }
+  ],
+  "restoration": {
+    "state": "restored",
+    "restored_sha256": "6f9bcb1fdced9494fc477af6ca7e6c0e203540da5343d370eb89c1391b3644e0",
+    "restored_at_utc": "2026-11-19T02:56:09Z"
+  },
+  "checks": {
+    "weights_changed_model_hash": true,
+    "output_distribution_changed": true,
+    "zero_norm_top5_uniform": true,
+    "uniform_logprob_expected": -11.931214658529285,
+    "original_full_checksum_restored": true,
+    "restored_baseline_matches": true
+  },
+  "passed": true
+}
