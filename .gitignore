@@ -1,0 +1,13 @@
+__pycache__/
+artifacts/
+results/
+artifact/
+runtime/
+selfcheck/
+*.gguf
+*.AppImage
+*.appimage
+*.bin
+*.backup
+*.bak
+*.part

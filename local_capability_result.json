@@ -1,0 +1,137 @@
+{
+  "capability_probe_only": true,
+  "training_performed": false,
+  "original_sha256": "6f9bcb1fdced9494fc477af6ca7e6c0e203540da5343d370eb89c1391b3644e0",
+  "worker_sha256": "2566cf151eecfab690a001ad5b9ee79f649dc53f72938e06dcc430239b8c5794",
+  "modified_sha256": "7a3cb053342449d58c87d1794b24835d78a591cec788abcd7502edaa0a98eaf9",
+  "samples": [
+    {
+      "phase": "baseline",
+      "seconds_including_load": 6.259,
+      "content": " +",
+      "sampled_token_id": 488,
+      "top_logprobs": [
+        {
+          "id": 488,
+          "token": " +",
+          "logprob": -0.025929361581802368
+        },
+        {
+          "id": 35093,
+          "token": "+b",
+          "logprob": -3.7296056747436523
+        },
+        {
+          "id": 353,
+          "token": " *",
+          "logprob": -7.252596855163574
+        },
+        {
+          "id": 481,
+          "token": " -",
+          "logprob": -8.608124732971191
+        },
+        {
+          "id": 10,
+          "token": "+",
+          "logprob": -8.809741020202637
+        }
+      ]
+    },
+    {
+      "phase": "zero-final-norm",
+      "seconds_including_load": 5.726,
+      "content": "3",
+      "sampled_token_id": 18,
+      "top_logprobs": [
+        {
+          "id": 3,
+          "token": "$",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 4,
+          "token": "%",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 1,
+          "token": "\"",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 0,
+          "token": "!",
+          "logprob": -11.931214332580566
+        },
+        {
+          "id": 2,
+          "token": "#",
+          "logprob": -11.931214332580566
+        }
+      ]
+    },
+    {
+      "phase": "restored",
+      "seconds_including_load": 5.452,
+      "content": " +",
+      "sampled_token_id": 488,
+      "top_logprobs": [
+        {
+          "id": 488,
+          "token": " +",
+          "logprob": -0.025929361581802368
+        },
+        {
+          "id": 35093,
+          "token": "+b",
+          "logprob": -3.7296056747436523
+        },
+        {
+          "id": 353,
+          "token": " *",
+          "logprob": -7.252596855163574
+        },
+        {
+          "id": 481,
+          "token": " -",
+          "logprob": -8.608124732971191
+        },
+        {
+          "id": 10,
+          "token": "+",
+          "logprob": -8.809741020202637
+        }
+      ]
+    }
+  ],
+  "restoration": {
+    "state": "restored",
+    "restored_sha256": "6f9bcb1fdced9494fc477af6ca7e6c0e203540da5343d370eb89c1391b3644e0",
+    "restored_at_utc": "2026-11-19T02:51:30Z"
+  },
+  "checks": {
+    "weights_changed_model_hash": true,
+    "output_distribution_changed": true,
+    "zero_norm_top5_uniform": true,
+    "uniform_logprob_expected": -11.931214658529285,
+    "original_full_checksum_restored": true,
+    "restored_baseline_matches": true
+  },
+  "passed": true,
+  "tensor": {
+    "name": "output_norm.weight",
+    "shape": [
+      2560
+    ],
+    "type": 0,
+    "bytes": 10240
+  },
+  "environment": {
+    "cpu_quota": 2,
+    "memory_limit_bytes": 8589934592,
+    "gpu": false,
+    "python_standard_library_only": true
+  },
+  "probe_script_sha256": "baed6676316aca4fb93d996822d6e8ebc59591d84e5107837238e749d51a0899"
+}

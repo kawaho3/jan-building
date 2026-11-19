@@ -1,0 +1,173 @@
+{
+  "evaluation_date": "2026-11-19",
+  "model": "janhq/Jan-code-4b-gguf",
+  "quantization": "Q4_K_M",
+  "model_revision": "76682f4d57a07a09e7bdaf11eb380dba823e0418",
+  "model_sha256": "6f9bcb1fdced9494fc477af6ca7e6c0e203540da5343d370eb89c1391b3644e0",
+  "attempts_per_problem": 1,
+  "candidate_code_repaired": false,
+  "framework": "local custom Python judge, not official LeetCode",
+  "familiar_problems": [
+    {
+      "id": "01",
+      "name": "Two Sum",
+      "planned": 209,
+      "passed": 209,
+      "executed": 209,
+      "first_failure": null,
+      "status": "passed",
+      "seconds": 0.068
+    },
+    {
+      "id": "02",
+      "name": "Longest Substring Without Repeating Characters",
+      "planned": 316,
+      "passed": 316,
+      "executed": 316,
+      "first_failure": null,
+      "status": "passed",
+      "seconds": 0.081
+    },
+    {
+      "id": "03",
+      "name": "Coin Change",
+      "planned": 264,
+      "passed": 264,
+      "executed": 264,
+      "first_failure": null,
+      "status": "passed",
+      "seconds": 0.088
+    },
+    {
+      "id": "04",
+      "name": "Trapping Rain Water",
+      "planned": 315,
+      "passed": 315,
+      "executed": 315,
+      "first_failure": null,
+      "status": "passed",
+      "seconds": 0.201
+    },
+    {
+      "id": "05",
+      "name": "Burst Balloons",
+      "planned": 184,
+      "passed": 0,
+      "executed": 184,
+      "first_failure": {
+        "case": 0,
+        "label": "exhaustive small-order oracle",
+        "args": [
+          [
+            3,
+            1,
+            5,
+            8
+          ]
+        ],
+        "expected": 167,
+        "event": "result",
+        "passed": false,
+        "seconds": 2.3e-05,
+        "error": "IndexError: list index out of range"
+      },
+      "status": "failed",
+      "seconds": 0.069
+    },
+    {
+      "id": "06",
+      "name": "Tiling a Rectangle with the Fewest Squares",
+      "planned": 169,
+      "passed": 43,
+      "executed": 169,
+      "first_failure": {
+        "case": 21,
+        "label": "exhaustive valid input domain",
+        "args": [
+          2,
+          4
+        ],
+        "expected": 2,
+        "event": "result",
+        "passed": false,
+        "seconds": 3e-06,
+        "reason": "incorrect integer result",
+        "actual": "8"
+      },
+      "status": "failed",
+      "seconds": 0.024
+    }
+  ],
+  "original_problem": {
+    "status": "timeout",
+    "planned": 1024,
+    "executed": 1018,
+    "passed": 904,
+    "first_failure": {
+      "args": [
+        [
+          4,
+          7,
+          4,
+          4,
+          7
+        ],
+        [
+          2,
+          1,
+          1,
+          1,
+          3
+        ],
+        5
+      ],
+      "expected": [
+        1,
+        3
+      ],
+      "label": "deterministic edge or example",
+      "event": "result",
+      "case": 5,
+      "passed": false,
+      "seconds": 8e-06,
+      "actual": "[0, 2]"
+    },
+    "seconds": 38.526,
+    "cpu_limit_seconds": 30,
+    "wall_limit_seconds": 40,
+    "failed_completed": 114,
+    "uncompleted": 6,
+    "stress_case_at_limit": {
+      "length": 100000,
+      "label": "max length all affordable"
+    },
+    "problem": {
+      "name": "Lantern Inspection Span",
+      "statement": "A lantern inspector records an ordered log. badges[i] identifies the lantern family at position i, and watts[i] is the nonnegative battery cost of inspecting that entry. Select one nonempty contiguous span whose total battery cost is at most budget and in which every badge value appears at most twice. Return [start, end], using zero-based inclusive indices, for the longest valid span. If several spans have the same maximum length, choose the one with the smaller total battery cost. If that is also tied, choose the earliest start. Return [-1, -1] if no nonempty span is valid.",
+      "constraints": "len(badges) == len(watts); 0 <= len(badges) <= 100000; -10^9 <= badges[i] <= 10^9; 0 <= watts[i] <= 10^6; 0 <= budget <= 10^9.",
+      "examples": "badges=[4,7,4,4,7], watts=[2,1,1,1,3], budget=5 -> [1,3]. badges=[8,8,8], watts=[0,0,0], budget=0 -> [0,1]. badges=[5], watts=[2], budget=1 -> [-1,-1]."
+    }
+  },
+  "sampling": {
+    "familiar": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "seed": 42,
+      "max_tokens": 6144
+    },
+    "original": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "seed": 42,
+      "max_tokens": 1024
+    }
+  },
+  "limits": {
+    "cpu_quota": 2,
+    "memory_GiB": 8,
+    "gpu": false
+  },
+  "proposed_target": "Novel constraint combinations: correct cost tie-breakers and linear-time window logic; verify on held-out families and retain regression tasks."
+}

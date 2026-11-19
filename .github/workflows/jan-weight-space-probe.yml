@@ -1,0 +1,94 @@
+name: Jan selected-tensor capability probe
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'codex/jan-weight-space-probe*'
+    paths:
+      - '.github/workflows/jan-weight-space-probe.yml'
+      - 'gguf_probe.py'
+      - 'bootstrap.py'
+      - 'collect_artifacts.py'
+      - 'selftest_probe.py'
+      - 'README.md'
+      - 'action-pins.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: jan-weight-space-probe-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      OMP_NUM_THREADS: '2'
+      OPENBLAS_NUM_THREADS: '2'
+      CUDA_VISIBLE_DEVICES: ''
+    steps:
+      - name: Check out experiment
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Check reversible edit safeguards on tiny fixtures
+        shell: bash
+        run: |
+          mkdir -p results
+          python3 selftest_probe.py 2>&1 | tee results/safety.log
+          cp selfcheck/results.json results/safety.json
+
+      - name: Verify and extract pinned official assets
+        shell: bash
+        run: |
+          mkdir -p results
+          python3 bootstrap.py \
+            --root "$RUNNER_TEMP/jan-weight-space-runtime" \
+            --min-free-gib 8 \
+            --paths-json results/bootstrap.json \
+            2>&1 | tee results/bootstrap.log
+
+      - name: Probe baseline, selected tensor ablation, and restoration
+        shell: bash
+        run: |
+          python3 gguf_probe.py \
+            --model "$RUNNER_TEMP/jan-weight-space-runtime/models/Jan-code-4b-Q4_K_M.gguf" \
+            --worker "$RUNNER_TEMP/jan-weight-space-runtime/application/squashfs-root/usr/lib/Jan/resources/bin/jan-llama-worker" \
+            --artifacts "$GITHUB_WORKSPACE/results/probe" \
+            --run \
+            2>&1 | tee results/probe-console.log
+
+      - name: Recover any pending selected-tensor edit
+        if: always()
+        shell: bash
+        run: |
+          if [[ -f "$GITHUB_WORKSPACE/results/probe/recovery.json" ]]; then
+            python3 gguf_probe.py \
+              --model "$RUNNER_TEMP/jan-weight-space-runtime/models/Jan-code-4b-Q4_K_M.gguf" \
+              --artifacts "$GITHUB_WORKSPACE/results/probe" \
+              --restore-only \
+              2>&1 | tee results/recovery-console.log
+          fi
+
+      - name: Stage only small metrics and logs
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p results
+          python3 collect_artifacts.py --source results --destination artifact
+
+      - name: Upload metrics and logs
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: jan-weight-space-probe-${{ github.run_id }}
+          path: artifact/
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 6
+          include-hidden-files: false
